@@ -8,5 +8,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: make ci-test
-      run: make ci-test
+    - env:
+          DOCKER_PASS: "${{ secrets.DOCKER_PASS }}"
+      name: Push
+      run: |
+        make ci-test
+        docker build -f Dockerfile . -t uditkarode/android-sdk-arch:latest
+        echo "$DOCKER_PASS" | docker login -u "uditkarode" --password-stdin
+        docker push uditkarode/android-sdk-arch:latest
