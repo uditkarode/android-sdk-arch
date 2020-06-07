@@ -6,7 +6,7 @@ COPY depinstall.sh /tmp/
 RUN bash /tmp/depinstall.sh
 # download and install Gradle
 # https://services.gradle.org/distributions/
-ARG GRADLE_VERSION=5.6.4
+ARG GRADLE_VERSION=6.1.1
 ARG GRADLE_DIST=all
 RUN cd /opt && \
     wget -q https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-${GRADLE_DIST}.zip && \
