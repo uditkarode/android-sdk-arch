@@ -16,7 +16,7 @@ RUN cd /opt && \
 
 # download and install Kotlin compiler
 # https://github.com/JetBrains/kotlin/releases/latest
-ARG KOTLIN_VERSION=1.3.72
+ARG KOTLIN_VERSION=1.4.10
 RUN cd /opt && \
     wget -q https://github.com/JetBrains/kotlin/releases/download/v${KOTLIN_VERSION}/kotlin-compiler-${KOTLIN_VERSION}.zip && \
     unzip *kotlin*.zip && \
@@ -24,7 +24,7 @@ RUN cd /opt && \
 
 # download and install Android SDK
 # https://developer.android.com/studio#command-tools
-ARG ANDROID_SDK_VERSION=6200805
+ARG ANDROID_SDK_VERSION=6609375
 ENV ANDROID_HOME /opt/android-sdk
 RUN mkdir -p ${ANDROID_HOME}/cmdline-tools && \
     wget -q https://dl.google.com/android/repository/commandlinetools-linux-${ANDROID_SDK_VERSION}_latest.zip && \
