@@ -1,1 +1,1 @@
-pacman -Syu --noconfirm git jdk8-openjdk wget unzip openssh
+pacman -Syu --noconfirm git jdk11-openjdk wget unzip openssh
