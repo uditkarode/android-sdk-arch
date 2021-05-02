@@ -28,7 +28,7 @@ docker-image-test: docker-image
 
 ci-test:
 	docker run --rm --privileged --tmpfs=/tmp:exec --tmpfs=/run/shm -v /run/docker.sock:/run/docker.sock \
-		-v $(PWD):/app -w /app $(DOCKER_ORGANIZATION)/$(DOCKER_IMAGE) \
+		-v $(PWD):/app -w /app $(DOCKER_ORGANIZATION) \
 		sh -c 'pacman -Syu --noconfirm make devtools docker && make docker-image-test'
 
 docker-push:
