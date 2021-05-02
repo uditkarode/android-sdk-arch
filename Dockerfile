@@ -6,7 +6,7 @@ COPY depinstall.sh /tmp/
 RUN bash /tmp/depinstall.sh
 # download and install Gradle
 # https://services.gradle.org/distributions/
-ARG GRADLE_VERSION=6.6.1
+ARG GRADLE_VERSION=6.8.3
 ARG GRADLE_DIST=all
 RUN cd /opt && \
     wget -q https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-${GRADLE_DIST}.zip && \
@@ -16,7 +16,7 @@ RUN cd /opt && \
 
 # download and install Kotlin compiler
 # https://github.com/JetBrains/kotlin/releases/latest
-ARG KOTLIN_VERSION=1.4.30
+ARG KOTLIN_VERSION=1.4.32
 RUN cd /opt && \
     wget -q https://github.com/JetBrains/kotlin/releases/download/v${KOTLIN_VERSION}/kotlin-compiler-${KOTLIN_VERSION}.zip && \
     unzip *kotlin*.zip && \
