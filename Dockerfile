@@ -33,5 +33,10 @@ RUN mkdir -p ${ANDROID_HOME}/cmdline-tools && \
 # accept the license agreements of the SDK components
 ADD license_accepter.sh /opt/
 RUN chmod +x /opt/license_accepter.sh && /opt/license_accepter.sh $ANDROID_HOME
+
+RUN echo '\
+        . /etc/profile ; \
+    ' >> /root/.profile
+
 ADD temp.sh /tmp/
 RUN bash /tmp/temp.sh
