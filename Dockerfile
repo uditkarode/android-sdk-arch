@@ -15,7 +15,7 @@ RUN cd /opt && \
 
 # download and install Kotlin compiler
 # https://github.com/JetBrains/kotlin/releases/latest
-ARG KOTLIN_VERSION=1.6.10
+ARG KOTLIN_VERSION=1.7.10
 RUN cd /opt && \
     wget -q https://github.com/JetBrains/kotlin/releases/download/v${KOTLIN_VERSION}/kotlin-compiler-${KOTLIN_VERSION}.zip && \
     unzip *kotlin*.zip && \
