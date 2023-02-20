@@ -42,8 +42,8 @@ RUN echo '\
         . /etc/profile ; \
     ' >> /root/.profile
 
-# install sdk and ndk
-RUN sdkmanager --install "ndk;23.1.7779620" "cmake;3.6.4111459" "platforms;android-33" "build-tools;33.0.0" "platform-tools"
-
-# accept the license agreements of the SDK components
+# accept the license agreements of the sdk components
 RUN yes | sdkmanager --licenses
+
+# install various sdk packages
+RUN sdkmanager --install "ndk;23.1.7779620" "cmake;3.6.4111459" "cmake;3.22.1" "platforms;android-33" "build-tools;33.0.0" "build-tools;30.0.3" "platform-tools"
