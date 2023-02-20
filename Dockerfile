@@ -35,9 +35,9 @@ RUN mkdir -p ${ANDROID_HOME}/cmdline-tools && \
 ADD license_accepter.sh /opt/
 RUN chmod +x /opt/license_accepter.sh && /opt/license_accepter.sh $ANDROID_HOME
 
-# install ndk
-RUN /opt/android-sdk/cmdline-tools/tools/bin/sdkmanager --install "ndk;23.1.7779620" "cmake;latest" || true
-
 RUN echo '\
         . /etc/profile ; \
     ' >> /root/.profile
+
+# install ndk
+RUN /opt/android-sdk/cmdline-tools/tools/bin/sdkmanager --install "ndk;23.1.7779620" "cmake;latest" || true
