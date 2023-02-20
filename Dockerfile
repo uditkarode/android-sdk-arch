@@ -46,4 +46,4 @@ RUN echo '\
 RUN sdkmanager --install "ndk;23.1.7779620" "cmake;3.6.4111459" "platforms;android-33" "build-tools;33.0.0" "platform-tools"
 
 # accept the license agreements of the SDK components
-RUN sdkmanager --licenses
+RUN yes | sdkmanager --licenses
