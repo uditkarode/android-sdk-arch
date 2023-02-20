@@ -14,7 +14,7 @@ RUN cd /opt && \
     ls -d */ | sed 's/\/*$//g' | xargs -I{} mv {} gradle && \
     rm gradle*.zip
 
-ENV PATH="/opt/gradle-${GRADLE_VERSION}/bin:$PATH"
+ENV PATH="/opt/gradle/bin:$PATH"
 
 # download and install Kotlin
 # https://github.com/JetBrains/kotlin/releases/latest
@@ -35,13 +35,15 @@ RUN mkdir -p ${ANDROID_HOME}/cmdline-tools && \
     unzip -qq *tools*linux*.zip -d ${ANDROID_HOME}/cmdline-tools && \
     rm *tools*linux*.zip
 
-# accept the license agreements of the SDK components
-ADD license_accepter.sh /opt/
-RUN chmod +x /opt/license_accepter.sh && /opt/license_accepter.sh $ANDROID_HOME
+ENV PATH="/opt/android-sdk/cmdline-tools/cmdline-tools/bin:$PATH"
+ENV PATH="/usr/lib/jvm/java-19-openjdk/bin:$PATH"
 
 RUN echo '\
         . /etc/profile ; \
     ' >> /root/.profile
 
-# install ndk
-RUN /opt/android-sdk/tools/bin/sdkmanager --install "ndk;23.1.7779620" "cmake;latest" || true
+# install sdk and ndk
+RUN sdkmanager --install "ndk;23.1.7779620" "cmake;3.6.4111459" "platforms;android-33" "build-tools;33.0.0" "platform-tools"
+
+# accept the license agreements of the SDK components
+RUN sdkmanager --licenses
